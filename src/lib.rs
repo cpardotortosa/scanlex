@@ -228,7 +228,9 @@ impl<'a> Scanner<'a> {
                         maybe_hex = self.ch == 'X' || self.ch == 'x';
                         if ! maybe_hex {
                             s.push('0');
-                            if ! self.is_digit() && self.ch != '.' { self.ch = '\0'; }
+                            if ! self.is_digit() && self.ch != '.' { 
+                                return Int(0);
+                            }
                         }
                     } else
                     if ! self.is_digit() { // false alarm, wuz just a char...
